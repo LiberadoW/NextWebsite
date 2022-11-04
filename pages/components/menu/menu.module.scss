@@ -1,0 +1,53 @@
+.menu {
+    min-height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__tab {
+        height: 500px;
+        width: 500px;
+        transition: all .35s linear;
+    }
+
+   
+
+    &__menuNav {
+        text-decoration: none;
+        list-style: none;
+        display: flex;
+        
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    &__button {
+        padding: 1rem 2rem;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: #36802d;
+            color: white;
+        }
+    }
+}
+
+
+.food {
+    background-color: red;
+}
+
+.desserts {
+    background-color: blue;
+}
+
+.drinks {
+    background-color: green;
+}
+
+.coffee {
+    background-color: yellow;
+}

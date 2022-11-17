@@ -93,8 +93,8 @@ const MenuCards = () => {
 
   return (
     <div className={`${styles.menu__tab} ${styles[menu.menuTab]}`}>
-      {MENU_ITEMS[menu.menuTab as keyof MenuInterface].map((menuItem) => {
-        return <MenuItem menuItem={menuItem} />;
+      {MENU_ITEMS[menu.menuTab as keyof MenuInterface].map((menuItem,index) => {
+        return <MenuItem key={index} menuItem={menuItem} />;
       })}
     </div>
   );

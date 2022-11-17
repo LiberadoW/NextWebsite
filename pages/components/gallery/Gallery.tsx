@@ -1,12 +1,8 @@
 import * as React from "react";
 import { useState, useEffect, useRef } from "react";
 import styles from "./gallery.module.scss";
-import picture from "../../images/pierwszy-stopien-zakwasy.jpg";
-import picture1 from "../../images/picture1.jpg";
-import picture2 from "../../images/picture2.jpg";
 import { useWindowWidth } from "../../utils/windowWidth";
 
-const NUMBER = 8;
 const DELAY = 3000;
 
 const PHOTOS = [
@@ -38,7 +34,7 @@ const Gallery = () => {
       setMaxIndex(PHOTOS.length - 2);
     }
     index > maxIndex && setIndex(0);
-  }, [width]);
+  }, [width, index, maxIndex]);
 
   function resetTimeout() {
     if (timeoutRef.current) {

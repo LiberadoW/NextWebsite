@@ -11,7 +11,7 @@ interface AppContextInterface {
   fontSize: number;
 }
 
-export const AppContext = createContext({});
+export const AppContext = createContext<AppContextInterface>({fontSize:0});
 
 const value: AppContextInterface = {
   fontSize:

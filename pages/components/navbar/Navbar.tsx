@@ -1,37 +1,45 @@
 import styles from "./navbar.module.scss";
 import NavItem from "./NavItem";
 import React, { useState } from "react";
+import MobileNavbarButton from "./MobileNavbarButton";
+import { useWindowWide } from "../../utils/windowResize";
 
 const NAV = [
   { text: "Strona główna", href: "home" },
   { text: "O nas", href: "about" },
   { text: "Menu", href: "menu" },
+  { text: "Galeria", href: "gallery" },
   { text: "Kontakt", href: "contact" },
 ];
 
 const Navbar = () => {
-  const [active, setActive] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <nav className={styles.navbar}>
-      {NAV.map((link, index) => {
-        return (
-          <div
-            onClick={() => {
-              setActiveIndex(index);
-            }}
-            key={index}
-            className={styles["navbar__item"]}
-          >
-            <NavItem
-              active={activeIndex === index}
-              text={link.text}
-              href={link.href}
-            />
-          </div>
-        );
-      })}
+    <nav className={styles.navigation}>
+      <ul
+        className={`${
+          useWindowWide(939)
+            ? styles.navigation__navbar
+            : styles.navigation__mobileNavbar
+        } ${navOpen ? styles["navigation__mobileNavbar--showMenu"] : ""}`}
+      >
+        {NAV.map((link, index) => {
+          return (
+            <li key={index} className={styles["navigation__item"]}>
+              <NavItem
+                text={link.text}
+                href={link.href}
+                setNavOpen={setNavOpen}
+              />
+            </li>
+          );
+        })}
+        <li className={styles.navigation__item}><button className={styles.navigation__reservationButton}>Rezerwuj</button></li>
+      </ul>
+      {!useWindowWide(939) ? (
+        <MobileNavbarButton setNavOpen={setNavOpen} navOpen={navOpen} />
+      ) : null}
     </nav>
   );
 };

@@ -19,6 +19,7 @@ const MenuButton = ({ value }: Props) => {
     >
       {value}
     </button>
+    
   );
 };
 

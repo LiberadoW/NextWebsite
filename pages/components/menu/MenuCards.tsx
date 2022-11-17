@@ -2,45 +2,55 @@ import * as React from "react";
 import styles from "./menu.module.scss";
 import { useContext } from "react";
 import { MenuContext } from "./Menu";
-import { SwitchTransition, CSSTransition } from "react-transition-group";
+import MenuItem from "./MenuItem";
 
-interface Menu {
-  food: {
-    name: string;
-    price: number;
-    ingredients: string[];
-  }[];
-  drinks: {
-    name: string;
-    price: number;
-    ingredients: string[];
-  }[];
-  desserts: {
-    name: string;
-    price: number;
-    ingredients: string[];
-  }[];
-  coffee: {
-    name: string;
-    price: number;
-    ingredients: string[];
-  }[];
+export interface MenuObject {
+  name: string;
+  price: number;
+  ingredients: string[];
 }
 
-const MENU_ITEMS: Menu = {
-  food: [
+export interface MenuInterface {
+  przystawki: MenuObject[];
+  "dania główne": MenuObject[];
+  desery: MenuObject[];
+  napoje: MenuObject[];
+}
+
+const MENU_ITEMS: MenuInterface = {
+  przystawki: [
     {
-      name: "Rosół",
-      price: 10,
-      ingredients: ["kurczak", "pietruszka", "makaron"],
+      name: "Lorem ipsum",
+      price: 15,
+      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
     },
     {
-      name: "Rosół",
-      price: 10,
-      ingredients: ["kurczak", "pietruszka", "makaron"],
+      name: "Lorem ipsum",
+      price: 15,
+      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
     },
+    {
+      name: "Lorem ipsum",
+      price: 15,
+      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
+    },
+    {
+      name: "Lorem ipsum",
+      price: 15,
+      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
+    },
+    {
+      name: "Lorem ipsum",
+      price: 15,
+      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
+    },{
+      name: "Lorem ipsum",
+      price: 15,
+      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
+    },
+    
   ],
-  drinks: [
+  "dania główne": [
     {
       name: "Cola",
       price: 10,
@@ -52,7 +62,7 @@ const MENU_ITEMS: Menu = {
       ingredients: ["kurczak", "pietruszka", "makaron"],
     },
   ],
-  desserts: [
+  desery: [
     {
       name: "Kajmak",
       price: 10,
@@ -64,7 +74,7 @@ const MENU_ITEMS: Menu = {
       ingredients: ["kurczak", "pietruszka", "makaron"],
     },
   ],
-  coffee: [
+  napoje: [
     {
       name: "Czarna",
       price: 10,
@@ -83,8 +93,8 @@ const MenuCards = () => {
 
   return (
     <div className={`${styles.menu__tab} ${styles[menu.menuTab]}`}>
-      {MENU_ITEMS[menu.menuTab as keyof Menu].map((item) => {
-        return <div>{item.name}</div>;
+      {MENU_ITEMS[menu.menuTab as keyof MenuInterface].map((menuItem) => {
+        return <MenuItem menuItem={menuItem} />;
       })}
     </div>
   );

@@ -2,23 +2,41 @@ import Header from "./components/header/Header";
 import HomePage from "./components/home/Home";
 import About from "./components/about/About";
 import Menu from "./components/menu/Menu";
+import Gallery from "./components/gallery/Gallery";
+import Contact from "./components/contact/Contact";
 import styles from "./main.module.scss";
+import { createContext } from "react";
+
+interface AppContextInterface {
+  fontSize: number;
+}
+
+export const AppContext = createContext({});
+
+const value: AppContextInterface = {
+  fontSize:
+    typeof document !== "undefined"
+      ? parseInt(getComputedStyle(document.body).getPropertyValue("font-size"))
+      : 0,
+};
 
 const Home = () => {
   return (
     <>
-      <div className={styles.app}>
-        <Header />
+      <AppContext.Provider value={value}>
+        <div className={styles.app}>
+          <Header />
+          <main className={styles.content}>
+            <HomePage />
+            <About />
+            <Menu />
+            <Gallery />
+            <Contact/>
+          </main>
+        </div>
 
-        <main className={styles.content}>
-          <HomePage />
-          <About />
-          <Menu />
-          <section id="contact">CONTACT</section>
-        </main>
-      </div>
-
-      <div className="loader"></div>
+        <div className="loader"></div>
+      </AppContext.Provider>
     </>
   );
 };

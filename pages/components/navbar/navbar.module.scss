@@ -1,26 +1,145 @@
-.navbar {
-  width: 100%;
-  height: 50px;
+@use "../../variables" as a;
+
+.navigation {
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
+  align-items: center;
+  width: 100%;
+
+  &__navbar {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    position: relative;
+    list-style: none;
+  }
+
+  &__reservationButton {
+    border: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background-color: #ffffff36;
+    color: #ffffffba;
+    border: 1px solid #ffffffba;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      color: white;
+      border-color: white;
+      background-color: #ffffff50;
+    }
+  }
 
   &__item {
-    cursor: pointer;
-    height: 50px;
-    padding: 0 2rem 0 2rem;
+    height: 3rem;
+    padding: 0 1rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__link {
-    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1rem;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    color: white;
 
-    &:hover {
-      text-decoration: underline;
-      transition: color 0.2s;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      right: 0;
+      background-color: white;
+      transform-origin: bottom left;
+      transition: transform 0.25s ease-out;
+      transform: scaleX(0);
+    }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__mobileNavbar {
+    overflow-y: scroll;
+    list-style: none;
+    position: fixed;
+    top: 3rem;
+    background: a.$color-primary;
+    right: -400px;
+    bottom: 0;
+    width: 15rem;
+    overflow: hidden;
+    z-index: 9;
+    transition: right 0.5s ease;
+
+    &--showMenu {
+      right: 0;
+    }
+  }
+
+  &__mobileNavButton {
+    width: 20px;
+    height: 15px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+
+    span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: white;
+      border-radius: 3px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: 0.25s ease-in-out;
+
+      &:nth-child(1) {
+        top: 0px;
+      }
+      &:nth-child(2) {
+        top: 6px;
+      }
+      &:nth-child(3) {
+        top: 12px;
+      }
+    }
+
+    &--open {
+      span {
+        &:nth-child(1) {
+          top: 6px;
+          transform: rotate(135deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+          left: -60px;
+        }
+
+        &:nth-child(3) {
+          top: 6px;
+          transform: rotate(-135deg);
+        }
+      }
     }
   }
 }

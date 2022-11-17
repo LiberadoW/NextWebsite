@@ -1,8 +1,10 @@
 import styles from "./menu.module.scss";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MenuNavigation from "./MenuNavigation";
 import MenuCards from "./MenuCards";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export type MenuContent = {
   menuTab: string;
@@ -10,18 +12,22 @@ export type MenuContent = {
 };
 
 export const MenuContext = React.createContext<MenuContent>({
-  menuTab: "food",
+  menuTab: "przystawki",
   setMenuTab: () => {},
 });
 
 const Menu = () => {
-  const [menuTab, setMenuTab] = useState("food");
+  const [menuTab, setMenuTab] = useState("przystawki");
   const menuValue = { menuTab, setMenuTab };
 
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
-    <section id="menu" className={styles.menu}>
-      <div>Menu</div>
-      <div className={styles.menu__mainMenu}>
+    <section id="menu" className={styles.menu} data-aos="fade-right">
+      <h2 className={styles.menu__title}>Menu</h2>
+      <div className={styles.menu__container}>
         <MenuContext.Provider value={menuValue}>
           <MenuNavigation />
           <MenuCards />

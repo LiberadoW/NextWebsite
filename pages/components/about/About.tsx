@@ -1,30 +1,13 @@
 import styles from "./about.module.scss";
 import aboutImg from "../../images/about.jpg";
 import blackLogo from "../../images/blacklogo.png";
-import { useState, useEffect } from "react";
+import {useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useWindowWide } from "../../utils/windowResize";
 
 const About = () => {
-  const useWindowWide = (size: number) => {
-    const [width, setWidth] = useState(0);
 
-    useEffect(() => {
-      function handleResize() {
-        setWidth(window.innerWidth);
-      }
-
-      window.addEventListener("resize", handleResize);
-
-      handleResize();
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, [setWidth]);
-
-    return width > size;
-  };
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -45,7 +28,7 @@ const About = () => {
                 alt="logo"
               />
             </div>
-            <h2 className={styles.about__title}>ABOUT US</h2>
+            <h2 className={styles.about__title}>O nas</h2>
             <p>
               Lorem ipsum dolor sit amet. Sed eveniet molestiae eos ducimus
               maxime rem quaerat optio aut doloribus magni et obcaecati illo ex
@@ -67,8 +50,9 @@ const About = () => {
             </p>
           </div>
         </div>
+        
         <div className={styles.about__container2} data-aos="fade-left">
-          {useWindowWide(939) && (
+          {useWindowWide(1023) && (
             <img className={styles.about__image} src={aboutImg.src} alt="" />
           )}
         </div>

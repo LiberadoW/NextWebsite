@@ -9,6 +9,8 @@
   width: 100%;
 }
 
-@media (min-width: 768px) {
-
-}
+@media screen and (min-width: 1920px) {
+      .app {
+          max-width: 1920px;
+          margin: 0 auto;
+  }}

@@ -1,6 +1,6 @@
 import styles from "./about.module.scss";
-import aboutImg from "../../images/about.jpg";
-import blackLogo from "../../images/blacklogo.png";
+import aboutImg from "../../public/images/about.jpg";
+import blackLogo from "../../public/images/blacklogo.png";
 import {useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";

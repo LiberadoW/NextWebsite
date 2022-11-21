@@ -1,9 +1,9 @@
-import Header from "./components/header/Header";
-import HomePage from "./components/home/Home";
-import About from "./components/about/About";
-import Menu from "./components/menu/Menu";
-import Gallery from "./components/gallery/Gallery";
-import Contact from "./components/contact/Contact";
+import Header from "../components/header/Header";
+import HomePage from "../components/home/Home";
+import About from "../components/about/About";
+import Menu from "../components/menu/Menu";
+import Gallery from "../components/gallery/Gallery";
+import Contact from "../components/contact/Contact";
 import styles from "./main.module.scss";
 import { createContext } from "react";
 

@@ -22,33 +22,75 @@ const MENU_ITEMS: MenuInterface = {
     {
       name: "Lorem ipsum",
       price: 15,
-      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
+      ingredients: [
+        "Lorem",
+        "fugiat",
+        "reprehenderit",
+        "anim",
+        "pariatur",
+        "tempor",
+      ],
     },
     {
       name: "Lorem ipsum",
       price: 15,
-      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
+      ingredients: [
+        "Lorem",
+        "fugiat",
+        "reprehenderit",
+        "anim",
+        "pariatur",
+        "tempor",
+      ],
     },
     {
       name: "Lorem ipsum",
       price: 15,
-      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
+      ingredients: [
+        "Lorem",
+        "fugiat",
+        "reprehenderit",
+        "anim",
+        "pariatur",
+        "tempor",
+      ],
     },
     {
       name: "Lorem ipsum",
       price: 15,
-      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
+      ingredients: [
+        "Lorem",
+        "fugiat",
+        "reprehenderit",
+        "anim",
+        "pariatur",
+        "tempor",
+      ],
     },
     {
       name: "Lorem ipsum",
       price: 15,
-      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
-    },{
+      ingredients: [
+        "Lorem",
+        "fugiat",
+        "reprehenderit",
+        "anim",
+        "pariatur",
+        "tempor",
+      ],
+    },
+    {
       name: "Lorem ipsum",
       price: 15,
-      ingredients: ["Lorem", "fugiat", "reprehenderit", "anim", "pariatur", "tempor"],
+      ingredients: [
+        "Lorem",
+        "fugiat",
+        "reprehenderit",
+        "anim",
+        "pariatur",
+        "tempor",
+      ],
     },
-    
   ],
   "dania główne": [
     {
@@ -93,9 +135,11 @@ const MenuCards = () => {
 
   return (
     <div className={`${styles.menu__tab} ${styles[menu.menuTab]}`}>
-      {MENU_ITEMS[menu.menuTab as keyof MenuInterface].map((menuItem,index) => {
-        return <MenuItem key={index} menuItem={menuItem} />;
-      })}
+      {MENU_ITEMS[menu.menuTab as keyof MenuInterface].map(
+        (menuItem, index) => {
+          return <MenuItem key={index} menuItem={menuItem} />;
+        }
+      )}
     </div>
   );
 };
